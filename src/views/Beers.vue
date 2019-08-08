@@ -1,15 +1,28 @@
 <template lang="html">
-<div id="">
-  <main-header title='Beer' />
-</div>
+  <div>
+    <beers-list :beers="beers"></beers-list>
+  </div>
 </template>
 
 <script>
-import MainHeader from '@/components/MainHeader';
+import { eventBus } from '../main.js';
+import BeersList from '../components/BeerList.vue';
+
 export default {
+  props: ['beers'],
+  data(){
+    return {
+      selectedBeer: null
+    }
+  },
   components: {
-    'main-header': MainHeader
-  }
+    'beers-list': BeersList
+  },
+  mounted(){
+  eventBus.$on('selectedBeer', (beer) => {
+    this.selectedBeer = beer
+  })
+}
 }
 </script>
 

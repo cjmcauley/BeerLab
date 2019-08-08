@@ -17,7 +17,6 @@ const router = new Router({
       name: 'favourites',
       component: Favourites
     }
-
   ]
 })
 
